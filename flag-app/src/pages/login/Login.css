@@ -1,4 +1,5 @@
 .login {
   background-image: url(../../../public/bg.png);
   height: 100vh;
+  /* height: 100%; */
 }

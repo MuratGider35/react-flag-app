@@ -2,7 +2,6 @@ import "./Login.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-
 function Login() {
   return (
     <div className="login  pt-5">
@@ -12,7 +11,7 @@ function Login() {
             <input
               className="mb-3  rounded-3 w-50  "
               type="text"
-              placeholder="please enter your email.."
+              placeholder="email.."
               required
             />
 
