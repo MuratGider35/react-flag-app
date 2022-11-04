@@ -1,12 +1,14 @@
 import "./Login.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   return (
     <div className="login  pt-5">
       <div className="container-fluid  justify-content-center bg-dark rounded-4 text-center ">
-        <Form>
+        <Form onSubmit={() => navigate("/")}>
           <div className="container bg-success  d-flex flex-column justify-content-center align-items-center p-5">
             <input
               className="mb-3  rounded-3 w-50  "
