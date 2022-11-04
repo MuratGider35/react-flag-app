@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../components/footer/Footer";
+
 import Navbars from "../components/navbar/Navbars";
 import About from "../pages/about/About";
 import Detail from "../pages/detail/Detail";
@@ -21,7 +21,7 @@ const AppRouter = () => {
         </Route>
         <Route path="/about" element={<About />} />
       </Routes>
-      <Footer />
+      
     </BrowserRouter>
   );
 };
