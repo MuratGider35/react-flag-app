@@ -29,11 +29,21 @@ const Home = () => {
   return (
     <div className="home">
       <div className="text-center">
-        <input type="text" onChange={(e) => setName(e.target.value)} />
-        <button className="btn btn-danger m-2" onClick={() => getApi()}>
+        <input
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          placeholder="country.."
+        />
+        <button
+          className="btn btn-success m-2"
+          onClick={() => {
+            getApi();
+          }}
+        >
           search
         </button>
-        <select className="p-1"
+        <select
+          className="p-1 sel"
           name="country"
           id="country"
           onChange={(e) => getAllname(e.target.value)}
@@ -46,12 +56,26 @@ const Home = () => {
             );
           })}
         </select>
+        <button
+          className="btn btn-danger m-2"
+          onClick={() => {
+            getAllname();
+          }}
+        >
+          search
+        </button>
       </div>
 
       <div className="container bg-secondary text-center p-5 rounded-4">
         <h4>please click on the flag for the details..</h4>
         <p>{name?.name}</p>
         <img src={name?.flags?.svg} alt="" width={"200px"} />
+      </div>
+
+      <div>
+        {selectcountry.map((item, idx) => {
+          return <p>{item?.name?.common}</p>;
+        })}
       </div>
     </div>
   );
