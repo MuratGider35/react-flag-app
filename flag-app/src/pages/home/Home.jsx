@@ -2,9 +2,11 @@ import "./Home.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [name, setName] = useState([{}]);
+  const navigate = useNavigate();
+  const [name, setName] = useState(["turkey"]);
   const [selectcountry, setSelectcountry] = useState([]);
 
   const getApi = async () => {
@@ -34,15 +36,12 @@ const Home = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="country.."
-      
         />
-      
 
         <button
           className="btn btn-success m-2"
           onClick={() => {
             getApi();
-          
           }}
         >
           search
@@ -66,20 +65,17 @@ const Home = () => {
             );
           })}
         </select>
-        <button
-          className="btn btn-danger m-2"
-          onClick={() => {
-            getAllname();
-          }}
-        >
-          search
-        </button>
       </div>
 
       <div className="container bg-secondary text-center p-5 rounded-4">
         <h4>please click on the flag for the details..</h4>
         <p>{name?.name}</p>
-        <img src={name?.flags?.svg} alt="" width={"200px"} />
+        <img
+          onClick={() => navigate("/detail", { state: name })}
+          src={name?.flags?.svg}
+          alt=""
+          width={"200px"}
+        />
       </div>
     </div>
   );
