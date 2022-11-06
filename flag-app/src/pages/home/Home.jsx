@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Home = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState([{}]);
   const [selectcountry, setSelectcountry] = useState([]);
 
   const getApi = async () => {
@@ -31,13 +31,18 @@ const Home = () => {
       <div className="text-center">
         <input
           type="text"
+          value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="country.."
+      
         />
+      
+
         <button
           className="btn btn-success m-2"
           onClick={() => {
             getApi();
+          
           }}
         >
           search
@@ -46,11 +51,16 @@ const Home = () => {
           className="p-1 sel"
           name="country"
           id="country"
-          onChange={(e) => getAllname(e.target.value)}
+          value={selectcountry?.name}
+          onChange={(e) => setName(e.target.value)}
         >
           {selectcountry.map((item, idx) => {
             return (
-              <option key={idx} value={item?.name?.common}>
+              <option
+                onChange={(e) => setSelectcountry(e.target.value)}
+                key={idx}
+                value={item?.name?.common}
+              >
                 {item?.name?.common}
               </option>
             );
@@ -70,12 +80,6 @@ const Home = () => {
         <h4>please click on the flag for the details..</h4>
         <p>{name?.name}</p>
         <img src={name?.flags?.svg} alt="" width={"200px"} />
-      </div>
-
-      <div>
-        {selectcountry.map((item, idx) => {
-          return <p>{item?.name?.common}</p>;
-        })}
       </div>
     </div>
   );
