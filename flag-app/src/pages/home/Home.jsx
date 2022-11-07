@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState(["turkey"]);
+  const [name, setName] = useState("");
   const [selectcountry, setSelectcountry] = useState([]);
 
   const getApi = async () => {
@@ -26,31 +26,30 @@ const Home = () => {
   useEffect(() => {
     getApi();
     getAllname();
-  }, []);
+  }, [name]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getApi();
+  };
 
   return (
     <div className="home">
       <div className="text-center">
         <input
           type="text"
-          value={name}
+          value={name && name.name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="country.."
+          placeholder="country.. "
         />
 
-        <button
-          className="btn btn-success m-2"
-          onClick={() => {
-            getApi();
-          }}
-        >
+        <button className="btn btn-success m-2" onClick={handleSubmit}>
           search
         </button>
         <select
           className="p-1 sel"
           name="country"
           id="country"
-          value={selectcountry?.name}
+          value={selectcountry.name}
           onChange={(e) => setName(e.target.value)}
         >
           {selectcountry.map((item, idx) => {
