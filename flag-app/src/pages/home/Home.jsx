@@ -26,23 +26,25 @@ const Home = () => {
   useEffect(() => {
     getApi();
     getAllname();
-  }, [name]);
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     getApi();
+    setName("")
   };
 
   return (
-    <div className="home">
+    <div className="home ">
       <div className="text-center">
+        <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={name && name.name}
+          value={name&&name}
           onChange={(e) => setName(e.target.value)}
           placeholder="country.. "
         />
 
-        <button className="btn btn-success m-2" onClick={handleSubmit}>
+        <button className="btn btn-success m-2" >
           search
         </button>
         <select
@@ -64,9 +66,12 @@ const Home = () => {
             );
           })}
         </select>
+
+        </form>
+        
       </div>
 
-      <div className="container bg-secondary text-center p-5 rounded-4">
+      <div className="container bg-secondary text-center p-5 rounded-4 mt-3">
         <h4>please click on the flag for the details..</h4>
         <p>{name?.name}</p>
         <img
