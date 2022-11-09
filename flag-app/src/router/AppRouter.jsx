@@ -8,6 +8,7 @@ import Login from "../pages/login/Login";
 import PrivateRouter from "./PrivateRouter";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Register from "../pages/Register";
 
 const AppRouter = () => {
   return (
@@ -16,12 +17,13 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
         <Route path="/detail" element={<PrivateRouter />}>
           <Route path="" element={<Detail />} />
         </Route>
         <Route path="/about" element={<About />} />
       </Routes>
-      
     </BrowserRouter>
   );
 };
