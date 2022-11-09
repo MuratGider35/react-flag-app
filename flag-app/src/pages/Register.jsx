@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
-import { createUser } from "../auth/firebase";
+import { createUser, signUpWithGoogle } from "../auth/firebase";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -11,10 +11,13 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const handleGoogleProvider = () => {
+    signUpWithGoogle(navigate);
+  };
   const handlesubmit = (e) => {
+    const displayName = `${firstName} ${lastName}`;
     e.preventDefault();
-    createUser(email, password, navigate);
-    
+    createUser(email, password, navigate, displayName);
   };
   return (
     <div className="login  pt-5">
@@ -54,7 +57,11 @@ const Register = () => {
               <Button className="btn btn-primary bg-black " type="submit">
                 Register
               </Button>
-              <Button className="btn btn-primary bg-black " type="button">
+              <Button
+                onClick={handleGoogleProvider}
+                className="btn btn-primary bg-black "
+                type="button"
+              >
                 Continue with Google
               </Button>
             </div>

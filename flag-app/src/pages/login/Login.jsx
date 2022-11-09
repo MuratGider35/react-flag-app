@@ -4,11 +4,15 @@ import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signIn } from "../../auth/firebase";
+import { signUpWithGoogle } from "../../auth/firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const handleGoogleProvider = () => {
+    signUpWithGoogle(navigate);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn(email, password, navigate);
@@ -41,7 +45,11 @@ function Login() {
             >
               Login
             </Button>
-            <Button className="btn bg-black m-auto btn-danger " type="button">
+            <Button
+              onClick={handleGoogleProvider}
+              className="btn bg-black m-auto btn-danger "
+              type="button"
+            >
               Continue with Google
             </Button>
           </div>

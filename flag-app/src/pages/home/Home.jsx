@@ -30,7 +30,7 @@ const Home = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getApi();
-    
+
     setName("");
   };
 
@@ -68,15 +68,19 @@ const Home = () => {
         </form>
       </div>
 
-      <div className="container bg-secondary text-center p-5 rounded-4 mt-3">
-        <h4>please click on the flag for the details..</h4>
-        <p>{name?.name}</p>
+      <div className="d-flex flex-col align-items-center container text-center p-5 rounded-2 mt-3 flag">
+        <h4 className="mb-2">please click on the flag for the details..</h4>
+        <h1 className="text-3xl font-bold">{name?.name}</h1>
+        <div className="mt-3">
         <img
           onClick={() => navigate("/detail", { state: name })}
           src={name?.flags?.svg}
           alt=""
           width={"200px"}
         />
+
+        </div>
+       
       </div>
     </div>
   );

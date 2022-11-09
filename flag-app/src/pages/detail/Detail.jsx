@@ -7,7 +7,7 @@ const Detail = () => {
   const navigate = useNavigate();
   const { state: name } = useLocation();
   return (
-    <div>
+    <div className="detailflag">
       <h1 className="text-3xl font-bold underline">{name?.name}</h1>
     </div>
   );

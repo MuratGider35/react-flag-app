@@ -1,7 +1,7 @@
 import React from "react";
 
 import Navbars from "../components/navbar/Navbars";
-import About from "../pages/about/About";
+
 import Detail from "../pages/detail/Detail";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
@@ -22,7 +22,7 @@ const AppRouter = () => {
         <Route path="/detail" element={<PrivateRouter />}>
           <Route path="" element={<Detail />} />
         </Route>
-        <Route path="/about" element={<About />} />
+     
       </Routes>
     </BrowserRouter>
   );

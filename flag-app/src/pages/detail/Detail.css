@@ -1,0 +1,8 @@
+.detailflag {
+  background-image: url(../../../public/Travel\ Goals1.png);
+  /* height: 100vh; */
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
