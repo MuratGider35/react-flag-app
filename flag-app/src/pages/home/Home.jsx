@@ -30,45 +30,42 @@ const Home = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getApi();
-    setName("")
+    
+    setName("");
   };
 
   return (
     <div className="home ">
       <div className="text-center">
         <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={name&&name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="country.. "
-        />
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="country.. "
+          />
 
-        <button className="btn btn-success m-2" >
-          search
-        </button>
-        <select
-          className="p-1 sel"
-          name="country"
-          id="country"
-          value={selectcountry.name}
-          onChange={(e) => setName(e.target.value)}
-        >
-          {selectcountry.map((item, idx) => {
-            return (
-              <option
-                onChange={(e) => setSelectcountry(e.target.value)}
-                key={idx}
-                value={item?.name?.common}
-              >
-                {item?.name?.common}
-              </option>
-            );
-          })}
-        </select>
-
+          <button className="btn btn-success m-2">search</button>
+          <select
+            className="p-1 sel"
+            name="country"
+            id="country"
+            value={selectcountry?.name}
+            onChange={(e) => setName(e.target.value)}
+          >
+            {selectcountry.map((item, idx) => {
+              return (
+                <option
+                  onChange={(e) => setSelectcountry(e.target.value)}
+                  key={idx}
+                  value={item?.name?.common}
+                >
+                  {item?.name?.common}
+                </option>
+              );
+            })}
+          </select>
         </form>
-        
       </div>
 
       <div className="container bg-secondary text-center p-5 rounded-4 mt-3">
