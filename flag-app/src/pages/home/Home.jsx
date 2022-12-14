@@ -12,8 +12,9 @@ const Home = () => {
   const getApi = async () => {
     const url = `https://restcountries.com/v2/name/${name}`;
     const data = await axios(url);
-    // console.log(data.data[0]);
     setName(data.data[0]);
+
+    console.log(data.data[0]);
   };
 
   const getAllname = async () => {
@@ -30,17 +31,16 @@ const Home = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getApi();
-
     setName("");
   };
-
+  console.log(name);
   return (
     <div className="home ">
       <div className="text-center">
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            value={name}
+            value={name.name || ""}
             onChange={(e) => setName(e.target.value)}
             placeholder="country.. "
           />
@@ -51,12 +51,17 @@ const Home = () => {
             name="country"
             id="country"
             value={selectcountry?.name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
           >
-            {selectcountry.map((item, idx) => {
+            {selectcountry?.map((item, idx) => {
               return (
                 <option
-                  onChange={(e) => setSelectcountry(e.target.value)}
+                  onChange={(e) => {
+                    setSelectcountry(e.target.value);
+                    setName(e.target.value);
+                  }}
                   key={idx}
                   value={item?.name?.common}
                 >
@@ -72,15 +77,13 @@ const Home = () => {
         <h4 className="mb-2">please click on the flag for the details..</h4>
         <h1 className="text-3xl font-bold">{name?.name}</h1>
         <div className="mt-3">
-        <img
-          onClick={() => navigate("/detail", { state: name })}
-          src={name?.flags?.svg}
-          alt=""
-          width={"200px"}
-        />
-
+          <img
+            onClick={() => navigate("/detail", { state: name })}
+            src={name?.flags?.svg}
+            alt=""
+            width={"200px"}
+          />
         </div>
-       
       </div>
     </div>
   );
